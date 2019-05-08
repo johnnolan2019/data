@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,7 +17,6 @@ import java.util.List;
 @Repository
 public class LogDbDAO implements ILogDbDAO {
 
-    //@Autowired
     private JdbcTemplate jdbcTemplate;
     private GrpcLoggerClient logger = new GrpcLoggerClient();
 
@@ -68,9 +66,10 @@ public class LogDbDAO implements ILogDbDAO {
     }
 
     @Override
-    public void deleteLogData(int id) {
+    public boolean deleteLogData(int id) {
         String sql = "DELETE FROM stored_values WHERE id=?";
-        jdbcTemplate.update(sql, id);
+        int result = jdbcTemplate.update(sql, id);
+        return result > 0;
     }
 
     @Override

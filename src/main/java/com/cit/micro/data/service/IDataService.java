@@ -10,5 +10,5 @@ public interface IDataService {
     LogData getLogDataById(int id);
     int addLogData(LogData logData);
     void updateLogData(LogData logData);
-    void deleteLogData(int id);
+    boolean deleteLogData(int id);
 }

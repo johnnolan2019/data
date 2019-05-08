@@ -10,6 +10,6 @@ public interface ILogDbDAO {
     LogData getLogDataById(int id);
     int addLogData(LogData logData);
     void updateLogData(LogData logData);
-    void deleteLogData(int id);
+    boolean deleteLogData(int id);
     boolean logDataExists(String text, String uid);
 }

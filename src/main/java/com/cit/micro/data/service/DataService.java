@@ -1,6 +1,5 @@
 package com.cit.micro.data.service;
 
-import com.cit.micro.data.Data;
 import com.cit.micro.data.LogData;
 import com.cit.micro.data.dao.ILogDbDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import java.util.List;
 @Service
 public class DataService implements IDataService {
 
-    //@Autowired
     private ILogDbDAO logDbDAO;
 
     @Autowired
@@ -44,8 +42,8 @@ public class DataService implements IDataService {
     }
 
     @Override
-    public void deleteLogData(int id) {
-        logDbDAO.deleteLogData(id);
+    public boolean deleteLogData(int id) {
+        return logDbDAO.deleteLogData(id);
     }
 
     @Override
