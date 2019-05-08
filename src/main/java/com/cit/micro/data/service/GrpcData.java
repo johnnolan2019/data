@@ -91,7 +91,9 @@ public class GrpcData extends AccessDBGrpc.AccessDBImplBase {
     @Override
     public void getChanel(Uid uid, StreamObserver<Channel> responseObserver){
         logger.info(String.format("getting channel for system with uid: %s", uid.getUid()) );
-        Channel returnChannel = Channel.newBuilder().setChannel(dataService.getChannel(uid.getUid())).build();
+        String dataChannel = dataService.getChannel(uid.getUid());
+        Channel returnChannel = Channel.newBuilder().setChannel(dataChannel).build();
+        logger.info(returnChannel.getChannel());
         responseObserver.onNext(returnChannel);
         responseObserver.onCompleted();
     }
