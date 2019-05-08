@@ -1,5 +1,6 @@
 package com.cit.micro.data.dao;
 
+import com.cit.micro.data.Channel;
 import com.cit.micro.data.LogData;
 import com.cit.micro.data.client.GrpcLoggerClient;
 import com.cit.micro.data.entity.DataRowMapper;
@@ -86,5 +87,11 @@ public class LogDbDAO implements ILogDbDAO {
         String sql = "SELECT uid, text, id FROM stored_values WHERE uid=?";
         RowMapper<LogData> rowMapper = new DataRowMapper();
         return this.jdbcTemplate.query(sql, rowMapper, uid);
+    }
+
+    public LogData getChannel(String uid){
+        String sql = "SELECT channel FROM stored_values WHERE uid=?";
+        RowMapper<LogData> rowMapper = new BeanPropertyRowMapper<>(LogData.class);
+        return jdbcTemplate.queryForObject(sql, rowMapper, uid);
     }
 }

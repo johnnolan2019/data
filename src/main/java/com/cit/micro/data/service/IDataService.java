@@ -1,6 +1,8 @@
 package com.cit.micro.data.service;
 
+import com.cit.micro.data.Channel;
 import com.cit.micro.data.LogData;
+import io.grpc.stub.StreamObserver;
 
 import java.util.List;
 
@@ -11,4 +13,5 @@ public interface IDataService {
     int addLogData(LogData logData);
     void updateLogData(LogData logData);
     boolean deleteLogData(int id);
+    String getChannel(String uid);
 }

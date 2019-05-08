@@ -1,5 +1,6 @@
 package com.cit.micro.data.service;
 
+import com.cit.micro.data.Channel;
 import com.cit.micro.data.LogData;
 import com.cit.micro.data.dao.ILogDbDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,5 +50,10 @@ public class DataService implements IDataService {
     @Override
     public List<LogData> getAllLogDataByUid(String uid){
         return logDbDAO.getAllLogDataByUid(uid);
+    }
+
+    @Override
+    public String getChannel(String uid){
+        return logDbDAO.getChannel(uid).getChannel();
     }
 }
