@@ -12,6 +12,7 @@ import java.io.IOException;
 public class ServerListener {
     private static final GrpcLoggerClient logger = new GrpcLoggerClient();
     private static GrpcData grpcData;
+    private static int port = 6568;
 
     @Autowired
     public ServerListener(GrpcData grpcDataInjected){
@@ -20,7 +21,7 @@ public class ServerListener {
 
     public static void serverRun(){
         Server server = ServerBuilder
-                .forPort(6568)
+                .forPort(port)
                 .addService(grpcData).build();
         logger.info("Data service now running ");
         try{
@@ -28,9 +29,9 @@ public class ServerListener {
             server.awaitTermination();
         }catch (
                 IOException e){
-            logger.error("bad");
+            logger.error("Data Service threw IO exception");
         }catch (InterruptedException e){
-            logger.error("Not as bad, but not good");
+            logger.error("Data Service threw Interrupted exception");
         }
     }
 

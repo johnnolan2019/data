@@ -13,5 +13,5 @@ public interface IDataService {
     int addLogData(LogData logData);
     void updateLogData(LogData logData);
     boolean deleteLogData(int id);
-    String getChannel(String uid);
+    Channel getChannel(String uid);
 }

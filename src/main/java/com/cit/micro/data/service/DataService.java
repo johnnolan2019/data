@@ -53,7 +53,11 @@ public class DataService implements IDataService {
     }
 
     @Override
-    public String getChannel(String uid){
-        return logDbDAO.getChannel(uid).getChannel();
+    public Channel getChannel(String uid){
+        LogData logData = logDbDAO.getChannel(uid);
+        return  Channel.newBuilder()
+                .setChannel(logData.getChannel())
+                .setUid(logData.getUid())
+                .build();
     }
 }
