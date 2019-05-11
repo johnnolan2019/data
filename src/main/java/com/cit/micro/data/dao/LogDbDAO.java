@@ -91,7 +91,7 @@ public class LogDbDAO implements ILogDbDAO {
 
     @Override
     public LogData getChannel(String uid){
-        String sql = "SELECT uid, channel FROM stored_values WHERE uid=? AND channel <> '' LIMIT 0,1";
+        String sql = "SELECT channel FROM stored_values WHERE uid=? AND channel <> '' LIMIT 0,1";
         RowMapper<LogData> rowMapper = new DataRowMapper();
         return jdbcTemplate.queryForObject(sql, rowMapper, uid);
     }
