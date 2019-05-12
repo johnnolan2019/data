@@ -5,7 +5,7 @@ RUN mvn -f /home/app/pom.xml clean package
 EXPOSE 6568
 FROM java:8-jdk-alpine
 COPY --from=build /home/app/target/data-0.0.1-SNAPSHOT.jar /usr/local/lib/data.jar
-COPY --from=build /home/app/src/resources/application.properties /usr/local/lib/application.properties
+COPY --from=build /home/app/src/main/resources/application.properties /usr/local/lib/application.properties
 COPY --from=build /home/app/target/dependency-jars /usr/local/lib/dependency-jars
 WORKDIR /usr/app
 RUN sh -c 'touch data-0.0.1-SNAPSHOT.jar'
